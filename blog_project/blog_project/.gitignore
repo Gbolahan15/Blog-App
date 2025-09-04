@@ -1,1 +1,26 @@
+# Virtual env
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Django
+media/
+staticfiles/
+
+# Secrets
 .env
+settings_local.py
+
+# IDE/OS
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
