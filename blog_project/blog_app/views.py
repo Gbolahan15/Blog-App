@@ -18,4 +18,10 @@ def post_view(request, slug):
     return render(request, 'post_detail.html', {'post':post, 'comments':comments})
 
 def comment_view(request, slug):
-    pass
+    post = get_object_or_404(Post, slug=slug, published=True)
+    if request.method == "POST":
+        user = request.POST.get("user")
+        content = request.POST.get("content")
+        Comment.objects.create(post=post, user=user, content=content, approved=False)
+        return redirect('post_detail', slug=post.slug)
+    return redirect('post_detail', slug=post.slug)
