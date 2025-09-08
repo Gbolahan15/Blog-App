@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posts</title>
+</head>
+<body>
+   <h1> {{ post.title }} </h1>
+    <p>By {{ post.author }} on {{ post.created_at }} </p>
+    <div> {{ post.content }} </div>
+
+    <h3>Comments</h3>
+    {% for comment in comments %} 
+        <p><b>{{comment.user}}</b>:
+        {{comment.content}}</p>
+    {% empty %}
+        <p>No comments yet.</p>
+    {% endfor %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <!-- <input type="text" name="user"> -->
+        <textarea name="content"></textarea>
+        <button type="submit">Add comment</button>
+    </form>
+</body>
+</html>
