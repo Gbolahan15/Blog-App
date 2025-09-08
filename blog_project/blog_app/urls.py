@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
     path('', views.homepage_view, name="home"),
-    path('category/', views.category_view, name="category"),
-    path('post/', views.post_view, name="post"),
-    path('comment/', views.comment_view, name="comment"),
+    path('post/<slug:slug>/', views.post_view, name="post_detail"),
+    path('category/<str:category_name>', views.category_view, name="category"),
+    path('post/<slug:slug>/comment/', views.comment_view, name="comment"),
 ]
