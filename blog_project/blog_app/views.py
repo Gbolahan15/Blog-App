@@ -5,7 +5,8 @@ from .models import Category, Post, Comment
 
 def homepage_view(request):
     posts = Post.objects.filter(published=True).order_by('-created_at')
-    return render(request, 'blog_app/home.html', {'posts':posts})
+    categories = Category.objects.all()
+    return render(request, 'blog_app/home.html', {'posts':posts, 'categories':categories})
 
 def category_view(request, category_name):
     category = get_object_or_404(Category, name=category_name)
