@@ -9,29 +9,26 @@
 </head>
 <body>
     <h1>Welcome To My Blog</h1>
+
     <h2>Categories</h2>
-    <ul>
+    <div class="categories">
         {% for category in categories %}
-        <li>
             <a href="{% url 'category' category.name %}">{{ category.name }}</a>
-        </li>
-        {% empty %}
-        <li>No categories yet.</li>
         {% endfor %}
-    </ul>
+    </div>
 
     <h2>Recent Posts</h2>
-    <ul>
+    <div class="post-list">
         {% for post in posts %} 
-        <div class="post-item">
-            <li>       
+        <div class="post-item">    
             <h3><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a></h3>
             <p>{{ post.author }} created on {{ post.created_at|date:"M d, Y" }}</p>
-        </li>
-        {% empty %}
-            <li>No posts yet.</li>
         </div>
+        {% empty %}
+            <p>No posts yet.</p>
+
         {% endfor %}
-</ul>
+    </div>
+
 </body>
 </html>
