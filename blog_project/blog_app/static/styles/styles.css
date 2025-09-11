@@ -1,76 +1,233 @@
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f9f9f9;
-    color: #333;
+* {
+  box-sizing: border-box;
 }
 
-h1{
-    text-align: center;
-    padding: 20px;
-    background: #222;
-    color: #fff;
-    margin: 0;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #ffffff;
+  color: #444;
+  line-height: 1.7;
 }
 
-h2{
-    margin-top: 20px;
+h1 {
+  text-align: center;
+  margin: 1.5rem 0 0.5rem;
+  font-size: 2rem;
+  color: #2b2b2b;
+}
+
+h2 {
+  text-align: center;
+  margin: 1.5rem 0 1rem;
+  font-size: 1.5rem;
+  color: #555;
 }
 
 /* Categories */
-
-.categories{
-    display: flex;
-    gap: 10px;
-    padding: 10px 20px;
-    flex-wrap: wrap;
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
 }
 
-.categories a{
-    display: inline-block;
-    padding: 6px 12px;
-    background: #007bff;
+.categories a {
+  border: 1px solid #ddd;
+  color: #555;
+  text-decoration: none;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  background: #fafafa;
+  transition: all 0.3s ease;
+}
+
+.categories a:hover {
+  background: #2d6cdf;
+  color: #fff;
+  border-color: #2d6cdf;
+}
+
+/* Post list grid */
+.post-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto 3rem;
+  padding: 0 1rem;
+}
+
+.post-item {
+  background: #fefefe;
+  padding: 1.5rem;
+  border-radius: 6px;
+  border: 1px solid #eee;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.post-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.post-item h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+}
+
+.post-item h3 a {
+  text-decoration: none;
+  color: #2d6cdf;
+}
+
+.post-item h3 a:hover {
+  color: #1a4f9f;
+  text-decoration: underline;
+}
+
+.post-item p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Empty message for no posts */
+.post-list p {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #aaa;
+  font-style: italic;
+}
+
+/* Toggle button styles */
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: #2d6cdf;
+  color: #fff;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  z-index: 9999;
+  transition: background 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: #1a4f9f;
+}
+
+/* Dark theme class overrides */
+body.dark-mode {
+  background: #121212;
+  color: #ddd;
+}
+
+body.dark-mode h1 {
+  color: #f1f1f1;
+}
+
+body.dark-mode h2 {
+  color: #ccc;
+}
+
+body.dark-mode .categories a {
+  background: #1f1f1f;
+  border-color: #333;
+  color: #ddd;
+}
+
+body.dark-mode .categories a:hover {
+  background: #2d6cdf;
+  color: #fff;
+  border-color: #2d6cdf;
+}
+
+body.dark-mode .post-item {
+  background: #1c1c1c;
+  border: 1px solid #333;
+  box-shadow: 0 1px 3px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .post-item:hover {
+  box-shadow: 0 3px 8px rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .post-item h3 a {
+  color: #4d9dff;
+}
+
+body.dark-mode .post-item h3 a:hover {
+  color: #81b7ff;
+}
+
+body.dark-mode .post-item p {
+  color: #aaa;
+}
+
+
+/* --- Dark mode --- */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #121212;
+    color: #ddd;
+  }
+
+  h1 {
+    color: #f1f1f1;
+  }
+
+  h2 {
+    color: #ccc;
+  }
+
+  .categories a {
+    background: #1f1f1f;
+    border-color: #333;
+    color: #ddd;
+  }
+
+  .categories a:hover {
+    background: #2d6cdf;
     color: #fff;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 14px;
+    border-color: #2d6cdf;
+  }
+
+  .post-list {
+    /* no change needed for grid */
+  }
+
+  .post-item {
+    background: #1c1c1c;
+    border: 1px solid #333;
+    box-shadow: 0 1px 3px rgba(255, 255, 255, 0.05);
+  }
+
+  .post-item:hover {
+    box-shadow: 0 3px 8px rgba(255, 255, 255, 0.08);
+  }
+
+  .post-item h3 a {
+    color: #4d9dff;
+  }
+
+  .post-item h3 a:hover {
+    color: #81b7ff;
+  }
+
+  .post-item p {
+    color: #aaa;
+  }
+
+  .post-list p {
+    color: #888;
+  }
 }
 
-.categories a:hover{
-    background: #0056b3;
-}
-
-/* Post cards */
-
-.post-list{
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.post-item{
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 20px 5px rgba(0, 0, 0, 0.1);
-}
-
-.post-item h3{
-    margin-top: 0;
-}
-
-.post-item a{
-    color: #007bff;
-    text-decoration: none;
-}
-
-.post-item a:hover{
-    text-decoration: underline;
-}
-
-.post-item p{
-    font-size: 14px;
-    color: #555;
-}
