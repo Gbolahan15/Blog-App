@@ -20,15 +20,15 @@ def post_view(request, slug):
         user = request.POST.get("user")
         content = request.POST.get("content")
         if user and content:
-            Comment.objects.create(post=post, user=user, content=content, approved=False)
+            Comment.objects.create(post=post, user=user, content=content, approved=True)
             return redirect('post_detail', slug=post.slug)
     return render(request, 'blog_app/post_detail.html', {'post':post, 'comments':comments})
 
-def comment_view(request, slug):
-    post = get_object_or_404(Post, slug=slug, published=True)
-    if request.method == "POST":
-        user = request.POST.get("user")
-        content = request.POST.get("content")
-        Comment.objects.create(post=post, user=user, content=content, approved=False)
-        return redirect('post_detail', slug=post.slug)
-    return redirect('post_detail', slug=post.slug)
+# def comment_view(request, slug):
+#     post = get_object_or_404(Post, slug=slug, published=True)
+#     if request.method == "POST":
+#         user = request.POST.get("user")
+#         content = request.POST.get("content")
+#         Comment.objects.create(post=post, user=user, content=content, approved=False)
+#         return redirect('post_detail', slug=post.slug)
+#     return redirect('post_detail', slug=post.slug)

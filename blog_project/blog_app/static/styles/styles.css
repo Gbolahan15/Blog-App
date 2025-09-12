@@ -200,10 +200,6 @@ body.dark-mode .post-item p {
     border-color: #2d6cdf;
   }
 
-  .post-list {
-    /* no change needed for grid */
-  }
-
   .post-item {
     background: #1c1c1c;
     border: 1px solid #333;
