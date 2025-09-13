@@ -8,37 +8,33 @@
     <title>Posts</title>
 </head>
 <body>
-   <h1> {{ post.title }} </h1>
-    <p>By {{ post.author }} on {{ post.created_at }} </p>
-    <div> {{ post.content }} </div>
+    <div class="post-content">
+        <h1>{{ post.title }}</h1>
+        <div class="body">{{ post.content }}</div>
+        <p class="meta">By {{ post.author }} on {{ post.created_at|date:"M d, Y" }}</p>
+    </div>
+
 
     <h3>Comments</h3>
     {% if comments %}
-        <ul>
-            {% for comment in comments %} 
-            <li>
-                <b>{{comment.user}}</b> <br>
-                {{comment.content}} <br></p>
-                <small>{{ comment.created_at | date:"M d, Y H:i" }}</small>
-            </li>
-            {% endfor %}
-        </ul>
+    <ul class="comments-list">
+        {% for comment in comments %} 
+        <li>
+            <b>{{comment.user}}</b><br>
+            {{comment.content}}<br>
+            <small>{{ comment.created_at|date:"M d, Y H:i" }}</small>
+        </li>
+        {% endfor %}
+    </ul>
     {% else %}
-    <p>No comments yet.</p>
+    <p class="no-comments">No comments yet.</p>
     {% endif %}
 
-    <!-- <form method="POST">
+    <form method="post" action="{% url 'post_detail' slug=post.slug %}" class="comment-form">
         {% csrf_token %}
-        <textarea name="content"></textarea>
-        <button type="submit">Leave a comment</button>
-    </form> -->
-
-    <form method="post" action="{% url 'post_detail' slug=post.slug %}">
-  {% csrf_token %}
-  <input type="text" name="user" placeholder="Your name">
-  <textarea name="content" placeholder="Your comment"></textarea>
-  <button type="submit">Submit</button>
-</form>
-
+        <input type="text" name="user" placeholder="Your name">
+        <textarea name="content" placeholder="Your comment"></textarea>
+        <button type="submit">Submit</button>
+    </form>
 </body>
 </html>

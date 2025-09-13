@@ -173,57 +173,251 @@ body.dark-mode .post-item p {
 }
 
 
+/* === Comment section styles === */
+
+.post-content {
+  max-width: 700px;      
+  margin: 2rem auto;     
+  padding: 0 1rem;       
+}
+
+.post-content h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #2b2b2b;
+}
+
+.post-content .body {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 1.5rem;
+}
+
+.post-content .meta {
+  text-align: center;
+  color: #777;
+  font-size: 0.95rem;
+}
+
+h3 {
+  max-width: 700px;
+  margin: 2rem auto 1rem;
+  text-align: center;
+  color: #333;
+}
+
+/* Comments list */
+.comments-list {
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.comments-list li {
+  background: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.comments-list li b {
+  color: #2d6cdf;
+  font-weight: 600;
+}
+
+.comments-list li small {
+  display: block;
+  margin-top: 0.5rem;
+  color: #999;
+  font-size: 0.8rem;
+}
+
+.no-comments {
+  max-width: 700px;
+  margin: 1rem auto;
+  text-align: center;
+  color: #aaa;
+  font-style: italic;
+}
+
+.comment-form {
+  max-width: 700px;
+  margin: 2rem auto 4rem;
+  background: #fefefe;
+  border: 1px solid #eee;
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.comment-form input[type="text"],
+.comment-form textarea {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.comment-form textarea {
+  min-height: 100px;
+}
+
+.comment-form button {
+  background: #2d6cdf;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.comment-form button:hover {
+  background: #1a4f9f;
+}
+
+
 /* --- Dark mode --- */
+/* === Dark mode for the single post page === */
+
+/* automatic dark mode (system setting) */
 @media (prefers-color-scheme: dark) {
   body {
     background: #121212;
     color: #ddd;
   }
 
+  /* title */
   h1 {
     color: #f1f1f1;
   }
 
-  h2 {
+  /* post body text */
+  .post-content .body,
+  .post-content div {
     color: #ccc;
   }
 
-  .categories a {
-    background: #1f1f1f;
-    border-color: #333;
-    color: #ddd;
-  }
-
-  .categories a:hover {
-    background: #2d6cdf;
-    color: #fff;
-    border-color: #2d6cdf;
-  }
-
-  .post-item {
-    background: #1c1c1c;
-    border: 1px solid #333;
-    box-shadow: 0 1px 3px rgba(255, 255, 255, 0.05);
-  }
-
-  .post-item:hover {
-    box-shadow: 0 3px 8px rgba(255, 255, 255, 0.08);
-  }
-
-  .post-item h3 a {
-    color: #4d9dff;
-  }
-
-  .post-item h3 a:hover {
-    color: #81b7ff;
-  }
-
-  .post-item p {
+  /* meta line */
+  .post-content .meta,
+  p {
     color: #aaa;
   }
 
-  .post-list p {
+  /* comments section (same as homepage style) */
+  .comments-list li {
+    background: #1c1c1c;
+    border: 1px solid #333;
+  }
+
+  .comments-list li b {
+    color: #4d9dff;
+  }
+
+  .comments-list li small {
+    color: #999;
+  }
+
+  .no-comments {
     color: #888;
+  }
+
+  .comment-form {
+    background: #1c1c1c;
+    border: 1px solid #333;
+    box-shadow: 0 1px 3px rgba(255,255,255,0.05);
+  }
+
+  .comment-form input[type="text"],
+  .comment-form textarea {
+    background: #121212;
+    color: #ddd;
+    border: 1px solid #444;
+  }
+
+  .comment-form input[type="text"]::placeholder,
+  .comment-form textarea::placeholder {
+    color: #888;
+  }
+
+  .comment-form button {
+    background: #4d9dff;
+    color: #fff;
+  }
+
+  .comment-form button:hover {
+    background: #81b7ff;
   }
 }
 
+/* manual dark-mode toggle */
+body.dark-mode {
+  background: #121212;
+  color: #ddd;
+}
+
+body.dark-mode h1 {
+  color: #f1f1f1;
+}
+
+body.dark-mode .post-content .body,
+body.dark-mode .post-content div {
+  color: #ccc;
+}
+
+body.dark-mode .post-content .meta,
+body.dark-mode p {
+  color: #aaa;
+}
+
+body.dark-mode .comments-list li {
+  background: #1c1c1c;
+  border: 1px solid #333;
+}
+
+body.dark-mode .comments-list li b {
+  color: #4d9dff;
+}
+
+body.dark-mode .comments-list li small {
+  color: #999;
+}
+
+body.dark-mode .no-comments {
+  color: #888;
+}
+
+body.dark-mode .comment-form {
+  background: #1c1c1c;
+  border: 1px solid #333;
+}
+
+body.dark-mode .comment-form input[type="text"],
+body.dark-mode .comment-form textarea {
+  background: #121212;
+  color: #ddd;
+  border: 1px solid #444;
+}
+
+body.dark-mode .comment-form input[type="text"]::placeholder,
+body.dark-mode .comment-form textarea::placeholder {
+  color: #888;
+}
+
+body.dark-mode .comment-form button {
+  background: #4d9dff;
+  color: #fff;
+}
+
+body.dark-mode .comment-form button:hover {
+  background: #81b7ff;
+}
