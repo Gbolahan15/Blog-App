@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Category, Post, Comment
-
+from .serializers import CategorySerializer, PostSerializer, CommentSerializer
+from rest_framework import viewsets
 # Create your views here.
 
 def homepage_view(request):
@@ -32,3 +33,15 @@ def post_view(request, slug):
 #         Comment.objects.create(post=post, user=user, content=content, approved=False)
 #         return redirect('post_detail', slug=post.slug)
 #     return redirect('post_detail', slug=post.slug)
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+class CommentViewSet(viewsets.ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
